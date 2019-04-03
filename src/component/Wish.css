@@ -1,0 +1,11 @@
+article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  margin: 5px;
+}
+
+article img {
+  padding: 5px;
+}

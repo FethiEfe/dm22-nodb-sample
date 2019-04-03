@@ -1,26 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import globe from "./img/globe.svg";
+import "./App.css";
+import Wishes from "./component/Wishes";
+import Add from "./component/Add";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tab: "wishes"
+    };
+    this.changeTab = this.changeTab.bind(this);
+  }
+
+  changeTab(tab) {
+    this.setState({ tab: tab });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <main>
+        <img src={globe} alt="globetrotter logo" />
+        <h1>globetrotter</h1>
+        <button onClick={() => this.changeTab("wishes")}>wishes</button>
+        <button onClick={() => this.changeTab("add")}>+</button>
+        <button onClick={() => this.changeTab("memories")}>memories</button>
+        {this.state.tab === "wishes" ? (
+          <Wishes />
+        ) : this.state.tab === "add" ? (
+          <Add changeTab={this.changeTab} />
+        ) : this.state.tab === "memories" ? (
+          <p>Memories </p>
+        ) : (
+          <p>This is an error</p>
+        )}
+      </main>
     );
   }
 }
